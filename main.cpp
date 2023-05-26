@@ -1,33 +1,34 @@
 #include <iostream>
-#include <cmath>
+#include <math.h>
 using namespace std;
 
-float f (float y) {
-    return ((y * y) * cos(y)) + 1;
+float f(float y){
+    return (((y*y)* cos(y))+1);
 }
 
 int main() {
-    float y;
-    float a, b, x, err;
-    do{
-        cout<<"inserire estremi"<<endl;
-        cin>>a>>b;
+    float a=0, b=0, x=0, err=0;
+    do {
+        cout << "inserire estremi" << endl;
+        cin >> a >> b;
+    } while ((f(a)* f(b)) >= 0);
 
-}while (f(a)*f(b)>=0);
-    do{
-        x=(a+b)/2;
-        if (f(x)==0)
-            break;
-            if(f(a)*f(x)<0){
-                a=x;
+    do {
+        x = ((a+b)/2);
+        if (f(x) == 0){
+        }else {
+            if ((f(a)* f(x)) < 0){
+                b = x;
+            } else if ((f(a)* f(x)) > 0) {
+                a = x;
             }
-            else{
-                b=x;
-            }
-            err= abs ((b-a)/2);
-
-    }while (err>= 1e-6);
-    cout<<x<<endl;
+            err = (abs((b-a)/2));
+        }
+    } while (err >= 0.00002);
+    x = x*10000;
+    float risultato1 = int (x);
+    float risultato2 = risultato1/10000;
+    cout << risultato2 ;
 
     return 0;
 }
